@@ -1,13 +1,27 @@
-body {
-  background-color: #fafafa;
+
+
+.login{
+  background-color: white;
   display: flex;
   justify-content: center;
   align-content: center;
   width: 100%;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
+
+}
+.signUpPage{
+  margin-top: 20vh;
+  width: 40vh;
+  margin-left: 40%;
 }
 
+.profile{
+  margin-top: 20vh;
+  width: 60vh;
+  margin-left: 40%;
+  
+}
 .box {
   border: 1px solid #dfdfdf;
   background-color: #fff;
@@ -24,3 +38,4 @@ body {
   width: 40px !important;
   height: 38px !important;
 }
+

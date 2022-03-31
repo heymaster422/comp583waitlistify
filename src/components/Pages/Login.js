@@ -2,30 +2,42 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { useUserAuth } from "../context/UserAuthContext";
+import GoogleButton from "react-google-button";
+import { useUserAuth } from "../../context/UserAuthContext";
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-  const { signUp } = useUserAuth();
-  let navigate = useNavigate();
+  const [error, setError] = useState("");
+  const { logIn, googleSignIn } = useUserAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      await signUp(email, password);
-      navigate("/");
+      await logIn(email, password);
+      navigate("/home");
     } catch (err) {
       setError(err.message);
     }
   };
 
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      await googleSignIn();
+      navigate("/Home");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
+    <div className="login">
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Signup</h2>
+        <h2 className="mb-3">Waitlistify Login</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -46,16 +58,25 @@ const Signup = () => {
 
           <div className="d-grid gap-2">
             <Button variant="primary" type="Submit">
-              Sign up
+              Log In
             </Button>
           </div>
         </Form>
+        <hr />
+        <div>
+          <GoogleButton
+            className="g-btn"
+            type="dark"
+            onClick={handleGoogleSignIn}
+          />
+        </div>
       </div>
       <div className="p-4 box mt-3 text-center">
-        Already have an account? <Link to="/">Log In</Link>
+        Don't have an account? <Link to="/signup">Sign up</Link>
       </div>
+    </div>
     </>
   );
 };
 
-export default Signup;
+export default Login;
