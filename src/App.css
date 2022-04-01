@@ -38,4 +38,8 @@
   width: 40px !important;
   height: 38px !important;
 }
+.table{
+  border: 1px solid;
+  width: 20%;
+}
 
