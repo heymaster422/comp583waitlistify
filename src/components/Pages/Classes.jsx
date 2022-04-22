@@ -2,12 +2,17 @@ import React, {useState, Component} from 'react'
 import {Link} from 'react-router-dom';
 import Nav from "../Nav/Nav";
 import Axios from "axios";
+//import testFunc from "./Login";
+import { initializeApp } from 'firebase/app';
 import {
     getFirestore, collection, getDocs,
     onSnapshot, query, updateDoc,
     where, orderBy, serverTimestamp,
-    addDoc, deleteDoc, doc
+    addDoc, deleteDoc, doc,
+    DocumentSnapshot
   } from "firebase/firestore"
+
+import { FirebaseError } from 'firebase/app';
 
 
 
@@ -15,39 +20,73 @@ export default function Classes() {
     const [count, setCount] = useState(0);
     const [count2, setCount2] = useState(0);
     const [count3, setCount3] = useState(0);
-    const [joke, setJoke] = useState("");
-    //firestore stuff
-    const db = getFirestore();
+    var [Temp3, setTemp3] = useState(0);
+    
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyCdJuqa3xNCaxVbSwTM4lo5_qdkA-ww4h4",
+      
+        authDomain: "comp583-data.firebaseapp.com",
+      
+        projectId: "comp583-data",
+      
+        storageBucket: "comp583-data.appspot.com",
+      
+        messagingSenderId: "301140683903",
+      
+        appId: "1:301140683903:web:dcbe2a3d2da51c6ba8e34a"
+      
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    //var count4 = 0;
+    //var temp = 0;
     const colRef = collection(db, 'counter');
+    
+    
     getDocs(colRef)
     .then((snapshot) => {
         let counter = [];
         snapshot.docs.forEach((doc) => {
         counter.push({ ...doc.data(), id: doc.id})
     })
-    console.log(counter);
+    Temp3 = counter[0].number;
+    console.log(counter[0].number);
+    
+    
+    
     })
     .catch(err => {
     console.log(err.message)
     })
-
-    //firestore functions
-
     
-    const updateForm = document.querySelector('update')
-    //updateForm.addEventListener('.submit', (e) => {
-        /*
-        e.preventDefault()
-        const docRef = doc(db, 'counter', updateForm.id.value)
-
+    
+    //firestore functions
+    function myFunc(){
+        
+        Temp3++;
+        setTemp3(Temp3)
+        const docRef = doc(db, 'counter', 'count')
+        
         updateDoc(docRef, {
-            number: '1'
+            number: Temp3
         })
-        .then(() => {
-            updateForm.reset()
+     
+    }
+   
+    function myFunc2(){
+        
+        Temp3--;
+        setTemp3(Temp3)
+        const docRef = doc(db, 'counter', 'count')
+        
+        updateDoc(docRef, {
+            number: Temp3
         })
-        */
-    //})
+    }
+    
+    
     
 
     
@@ -113,27 +152,21 @@ export default function Classes() {
                         <td>      
                             <div className="my-5">
                                             
-                                <button id="btn btn-success mx-3" type="button" onClick={() => setCount3(count3 + 1)}>Enroll</button>
+                                <button id="btn btn-success mx-3" type="button" onClick={() => myFunc()} >Enroll</button>
                             </div>       
                         </td>
                         <td>
                             <div className="my-5">
-                                <button id="btn btn-danger mx-3" type="button" onClick={() => setCount3(count3 - 1)}>Drop</button>
+                                <button id="btn btn-danger mx-3" type="button" onClick={() => myFunc2()}>Drop</button>
                             </div> 
                         </td>
                         <td>
-                        <h2 className="my-5">{count3}</h2>
+                        <h2 className="my-5">{Temp3}</h2>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div>
-                <form class="update">
-                    <label for="id">id:</label>
-                    <input type="text" name="id" required></input>
-                    <button>update entry</button>
-                </form>
-            </div>
+            
             
 
 

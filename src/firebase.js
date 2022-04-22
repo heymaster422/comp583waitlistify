@@ -30,3 +30,4 @@ const app = initializeApp(firebaseConfig);
 //firebase init
 export const auth = getAuth(app);
 export default app;
+//export default testFunc;
