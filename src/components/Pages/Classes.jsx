@@ -262,8 +262,8 @@ export default function Classes() {
             <Nav />
 
             <h1>Class Enrollment</h1>
-
-            <div>
+            
+            <div class="container">
                 <h2>Class List</h2>
                 <table class="table">
                     <tr>

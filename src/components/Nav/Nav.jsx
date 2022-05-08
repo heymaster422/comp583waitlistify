@@ -4,13 +4,15 @@ import Navbar from 'react-bootstrap/Navbar'
 
 export default function Nav() {
     const navStyle ={
-        color: 'white'
-
+        color: 'white',
+        textDecoration: 'none',
     };
+
     return(
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+        <Navbar className="color-nav">
         <Link style={navStyle}  to= '/Home'>  
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="#" >Waitlistify</a>
         </Link>  
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,7 +42,7 @@ export default function Nav() {
 
             </ul>
         </div>
-        </nav>
+        </Navbar>
 
     )
 }

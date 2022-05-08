@@ -24,7 +24,7 @@ const Profile = () => {
           {user && user.email}
         </div>
         <div className="d-grid gap-2">
-          <Button variant="primary" onClick={handleLogout}>
+          <Button variant="primary" style={{ backgroundColor: "#D22030" }} onClick={handleLogout}>
             Log out
           </Button>
         </div>

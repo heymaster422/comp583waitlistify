@@ -43,3 +43,11 @@
   width: 27%;
 }
 
+.container {
+  max-width: 150% !important;/*Set your own width %; */
+}
+
+
+.color-nav{
+  background-color: #D22030;
+}

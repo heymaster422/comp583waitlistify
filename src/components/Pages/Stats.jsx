@@ -64,6 +64,7 @@ class Stats extends Component {
         return (
             <div>
                 <Nav />
+                <div class="container">
                 <body></body>
 
                 <h1>Class Statistics</h1><br />
@@ -79,7 +80,7 @@ class Stats extends Component {
                         {this.renderTableData()}
                     </tbody>
                 </table>
-
+                </ div>
             </div>
         )
     }
