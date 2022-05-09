@@ -255,11 +255,14 @@ export default function Classes() {
         }
 
     }
+
+    const [check, setCheck] = useState(true);
+
     //below is html, for some reason react is like this idk
     return (
 
         <div>
-            <Nav />
+            <Nav isColorBlind = {check} />
 
             <h1>Class Enrollment</h1>
             

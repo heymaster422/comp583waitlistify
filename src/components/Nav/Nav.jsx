@@ -1,16 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar'
+import Navbar from 'react-bootstrap/Navbar';
 
-export default function Nav() {
+export default function Nav({isColorBlind}) {
     const navStyle ={
         color: 'white',
         textDecoration: 'none',
     };
+    
 
     return(
-
-        <Navbar className="color-nav">
+        
+        <Navbar className={isColorBlind ? 'normalColors' : 'blindColors'}>
         <Link style={navStyle}  to= '/Home'>  
         <a class="navbar-brand" href="#" >Waitlistify</a>
         </Link>  

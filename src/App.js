@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Pages/Home";
@@ -12,6 +13,7 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Stats from "./components/Pages/Stats";
 
 function App() {
+  const [check, setCheck] = useState(true);
   return (
       <Row>
         <Col>
@@ -21,7 +23,7 @@ function App() {
                 path="/Home"
                 element={
                   <ProtectedRoute>
-                    <Nav />
+                    <Nav isColorBlind = {check}/>
                     <Home />
                   </ProtectedRoute>
                 }

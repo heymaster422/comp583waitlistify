@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
+import Nav from "../Nav/Nav";
 
 export default function Home() {
 
     return(
+        
         <div class="container">
+            
             <h1> Home Page</h1>
             <h3>
                 What is this website?

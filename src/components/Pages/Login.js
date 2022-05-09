@@ -57,7 +57,7 @@ const Login = () => {
           </Form.Group>
 
           <div className="d-grid gap-2">
-            <Button variant="primary" style={{ backgroundColor: "#D22030" }} type="Submit">
+            <Button variant="primary" type="Submit">
               Log In
             </Button>
           </div>

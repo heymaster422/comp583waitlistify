@@ -48,6 +48,10 @@
 }
 
 
-.color-nav{
+.normalColors{
   background-color: #D22030;
+}
+
+.blindColors{
+  background-color: #886627;
 }

@@ -1,4 +1,4 @@
-import React, { Component, setState } from 'react'
+import React, { Component} from 'react'
 import { Link } from 'react-router-dom';
 import Nav from "../Nav/Nav";
 import Axios from "axios";
@@ -43,7 +43,7 @@ class Stats extends Component {
                 }
             }
         }
-
+    
         return this.state.classes.map((sch, index) => {
             const { priority, number, title, students } = sch;
             const i = 1;
@@ -59,7 +59,7 @@ class Stats extends Component {
     }
 
 
-
+    
     render() {
         return (
             <div>
